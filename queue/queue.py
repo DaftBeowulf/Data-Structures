@@ -6,13 +6,13 @@ class Queue:
         self.storage = LinkedList()
 
     def enqueue(self, item):
-        pass
+        self.storage.add_tail(item)
 
     def dequeue(self):
-        pass
+        return self.storage.remove_head()
 
     def len(self):
-        pass
+        return self.storage.get_length()
 
 
 class LinkedList:
@@ -47,6 +47,18 @@ class LinkedList:
             self.head = removed.get_next()
             return removed.get_value()
 
+    def get_length(self):
+
+        length = 0
+        current = self.head
+
+        # if list is empty, will immediately leave while loop and return 0
+        while current != None:
+            length += 1
+            current = current.get_next()
+
+        return length
+
 
 class Node:
     def __init__(self, value=None, next_node=None):
@@ -61,3 +73,7 @@ class Node:
 
     def set_next(self, node):
         self.next_node = node
+
+
+q = Queue()
+print(q.len())
