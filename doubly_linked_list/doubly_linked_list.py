@@ -109,10 +109,28 @@ class DoublyLinkedList:
         return old_tail.value
 
     def move_to_front(self, node):
-        pass
+        # if node is only item in list OR is already at the front, do nothing
+        if self.length > 1 and self.head != node:
+            # if node is current tail, make sure to assign new tail
+            if node is self.tail:
+                self.tail = self.tail.prev
+
+            node.delete()
+            self.head.prev = node
+            node.next = self.head
+            self.head = node
 
     def move_to_end(self, node):
-        pass
+        # if node is only item in list OR is already at the end, do nothing
+        if self.length > 1 and self.tail != node:
+            # if node is current head, make sure to assign new head
+            if node is self.head:
+                self.head = self.head.next
+
+            node.delete()
+            self.tail.next = node
+            node.prev = self.tail
+            self.tail = node
 
     def delete(self, node):
         pass
@@ -124,4 +142,8 @@ class DoublyLinkedList:
 dll = DoublyLinkedList(ListNode(3))
 dll.add_to_head(1)
 dll.add_to_head(2)
-print(dll.head.value, dll.length)
+print(dll.head.value, dll.tail.prev.value,
+      dll.tail.value, "length: ", dll.length)
+dll.move_to_front(dll.tail.prev)
+print(dll.head.value, dll.tail.prev.value,
+      dll.tail.value, "length: ", dll.length)
