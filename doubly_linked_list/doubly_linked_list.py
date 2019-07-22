@@ -158,13 +158,3 @@ class DoublyLinkedList:
             current_node = current_node.next
 
         return current_max
-
-
-dll = DoublyLinkedList(ListNode(3))
-dll.add_to_head(1)
-dll.add_to_head(2)
-print(dll.head.value, dll.tail.prev.value,
-      dll.tail.value, "length: ", dll.length)
-dll.move_to_front(dll.tail.prev)
-print(dll.head.value, dll.tail.prev.value,
-      dll.tail.value, "length: ", dll.length)
