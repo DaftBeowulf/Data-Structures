@@ -137,6 +137,7 @@ class DoublyLinkedList:
         if self.length == 1:
             self.head = None
             self.tail = None
+        # if node is current head or tail, assign new one before deleting
         if node is self.head:
             self.head = node.next
         elif node is self.tail:
@@ -145,7 +146,18 @@ class DoublyLinkedList:
         node.delete()
 
     def get_max(self):
-        pass
+        # list is empty
+        if self.length == 0:
+            return None
+
+        current_node = self.head
+        current_max = self.head.value
+        while current_node != None:
+            if current_node.value > current_max:
+                current_max = current_node.value
+            current_node = current_node.next
+
+        return current_max
 
 
 dll = DoublyLinkedList(ListNode(3))
