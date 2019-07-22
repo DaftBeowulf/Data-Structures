@@ -3,18 +3,21 @@ Answer the following questions for each of the data structures you implemented a
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
+   a: O(1) -- performs one execution regardless of current Queue length
 
 2. What is the runtime complexity of `dequeue`?
+   a: O(1) -- performs one execution regardless of current Queue length
 
 3. What is the runtime complexity of `len`?
+   a: O(n) -- loop through the length of the LinkedList used for storage before returning a value
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
 
 2. What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`?
 
 ## Heap
 
