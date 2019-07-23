@@ -14,10 +14,13 @@ Answer the following questions for each of the data structures you implemented a
 ## Binary Search Tree
 
 1. What is the runtime complexity of `insert`?
+   averages out to O(log n) -- each check it performs at the current node eliminates needing to traverse half the remaining tree
 
 2. What is the runtime complexity of `contains`?
+   averages out to O(log n) -- each check it performs at the current node eliminates needing to traverse half the remaining tree (is either in left or right of current node, if not AT current node)
 
 3. What is the runtime complexity of `get_max`?
+   averages out to O(log n) -- each check it performs eliminates the left branch of the current node (all the lower values)
 
 ## Heap
 
