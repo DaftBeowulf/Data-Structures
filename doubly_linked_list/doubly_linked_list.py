@@ -113,24 +113,22 @@ class DoublyLinkedList:
         if self.length > 1 and self.head != node:
             # if node is current tail, make sure to assign new tail
             if node is self.tail:
-                self.tail = self.tail.prev
-
-            node.delete()
-            self.head.prev = node
-            node.next = self.head
-            self.head = node
+                self.remove_from_tail()
+            else:
+                node.delete()
+                self.length -= 1
+            self.add_to_head(node.value)
 
     def move_to_end(self, node):
         # if node is only item in list OR is already at the end, do nothing
         if self.length > 1 and self.tail != node:
             # if node is current head, make sure to assign new head
             if node is self.head:
-                self.head = self.head.next
-
-            node.delete()
-            self.tail.next = node
-            node.prev = self.tail
-            self.tail = node
+                self.remove_from_head()
+            else:
+                node.delete()
+                self.length -= 1
+            self.add_to_tail(node.value)
 
     def delete(self, node):
         # if node is only item in list:
@@ -152,7 +150,7 @@ class DoublyLinkedList:
 
         current_node = self.head
         current_max = self.head.value
-        while current_node != None:
+        while current_node:  # shorthand for current_node != None
             if current_node.value > current_max:
                 current_max = current_node.value
             current_node = current_node.next
