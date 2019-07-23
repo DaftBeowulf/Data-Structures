@@ -1,7 +1,6 @@
 import unittest
 from doubly_linked_list import DoublyLinkedList
 from text_buffer import TextBuffer
-​
 
 
 class TextBufferTests(unittest.TestCase):
@@ -51,6 +50,5 @@ class TextBufferTests(unittest.TestCase):
         self.assertEqual(len(self.buf.contents), 20)
 
 
-​
 if __name__ == '__main__':
     unittest.main()

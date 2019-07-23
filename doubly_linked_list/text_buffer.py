@@ -1,4 +1,4 @@
-from doubly_linked_list import DoublyLinkedList​
+from doubly_linked_list import DoublyLinkedList
 
 
 class TextBuffer:
@@ -9,7 +9,8 @@ class TextBuffer:
         # check if an init string is provided
         # if so, put the contents of the init string in self.contents
         if init:
-            pass
+            for char in init:
+                self.contents.add_to_tail(char)
 
     def __str__(self):
         # needs to return a string to print
@@ -21,18 +22,26 @@ class TextBuffer:
         return s
 
     def append(self, string_to_add):
-        pass
+        for char in string_to_add:
+            self.contents.add_to_tail(char)
 
     def prepend(self, string_to_add):
         # reverse the incoming string to maintain correct
         # order when adding to the front of the text buffer
-        pass
+        for char in string_to_add[::-1]:
+            self.contents.add_to_head(char)
 
     def delete_front(self, chars_to_remove):
-        pass
+        i = 0
+        while i != chars_to_remove and self.contents.length:
+            self.contents.remove_from_head()
+            i += 1
 
     def delete_back(self, chars_to_remove):
-        pass
+        i = 0
+        while i != chars_to_remove and self.contents.length:
+            self.contents.remove_from_tail()
+            i += 1
 
     """
     Join other_buffer to self
@@ -43,15 +52,23 @@ class TextBuffer:
 
     def join(self, other_buffer):
         # we might want to check that other_buffer is indeed a text buffer
-        # set self list tail's next node to be the head of the other buffer
-
+        if isinstance(other_buffer.contents.head.value, str):
+            # set self list tail's next node to be the head of the other buffer
+            self.contents.tail.next = other_buffer.contents.head
         # set other_buffer head's prev node to be the tail of this buffer
+            other_buffer.contents.head.prev = self.contents.tail
 
-        pass
+            # reassign definitions of what is the tail and length of the joined buffer
+            self.contents.tail = other_buffer.contents.tail
+            self.contents.length += other_buffer.contents.length
 
-    # if we get fed a string instead of a text buffer instance,
-    # initialize a new text buffer with this string and then
-    # call the join method
+        # if we get fed a string instead of a text buffer instance,
+        # initialize a new text buffer with this string and then
+        # call the join method
+        elif isinstance(other_buffer, str):
+            new_buff = TextBuffer(other_buffer)
+            self.join(new_buff)
+
     def join_string(self, string_to_join):
         pass
 
