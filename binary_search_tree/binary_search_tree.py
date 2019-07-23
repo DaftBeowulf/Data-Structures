@@ -32,10 +32,17 @@ class BinarySearchTree:
                 current_node = current_node.left
 
     def get_max(self):
-        pass
+        current_node = self
+        while current_node.right:
+            current_node = current_node.right
+        return current_node.value
 
     def for_each(self, cb):
-        pass
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
+        cb(self.value)
 
 
 test = BinarySearchTree(2)
