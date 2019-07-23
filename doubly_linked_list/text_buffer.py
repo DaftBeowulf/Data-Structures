@@ -66,11 +66,14 @@ class TextBuffer:
         # initialize a new text buffer with this string and then
         # call the join method
         elif isinstance(other_buffer, str):
-            new_buff = TextBuffer(other_buffer)
-            self.join(new_buff)
+            self.join_string(other_buffer)
+        else:
+            return "Unsupported type"
 
     def join_string(self, string_to_join):
-        pass
+        if isinstance(string_to_join, str):
+            new_buff = TextBuffer(string_to_join)
+            self.join(new_buff)
 
 
 if __name__ == '__main__':
