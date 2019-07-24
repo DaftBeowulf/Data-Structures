@@ -36,13 +36,12 @@ class Heap:
 
         # only execute if left child index actually exists in storage, else end
         if l < self.get_size():
-            # find greatest child value
-            max_child = l
-            # set max as right child if index exists and greater than left child
+            priority_child = l
+            # set priority as right child if index exists and greater than left child
             if r < self.get_size():
                 if self.comparator(self.storage[r], self.storage[l]):
-                    max_child = r
+                    priority_child = r
 
-                if not self.comparator(self.storage[index], self.storage[max_child]):
-                    self.storage[index], self.storage[max_child] = self.storage[max_child], self.storage[index]
-                    self._sift_down(max_child)
+            if not self.comparator(self.storage[index], self.storage[priority_child]):
+                self.storage[index], self.storage[priority_child] = self.storage[priority_child], self.storage[index]
+                self._sift_down(priority_child)
