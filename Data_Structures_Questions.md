@@ -25,14 +25,19 @@ Answer the following questions for each of the data structures you implemented a
 ## Heap
 
 1. What is the runtime complexity of `_bubble_up`?
+   approximately O(log n) -- it could potentially have to bubble up all the way from a leaf to the root node, but the path it would take to get there would eliminate more than half of the comparisons in a standard list
 
 2. What is the runtime complexity of `_sift_down`?
+   O(log n) -- the reverse of bubble_up but remains the same, even if the values have to sift all the way down to a distant leaf, it would be cutting the comparisons in half with each step
 
 3. What is the runtime complexity of `insert`?
+   O(log n) -- it only appends the new value to the end and then runs \_bubble_up
 
 4. What is the runtime complexity of `delete`?
+   O(log n) -- it only swaps and deletes the end values and then runs \_sift_down
 
 5. What is the runtime complexity of `get_max`?
+   O(1) -- it always it at the first index, so constant time
 
 ## Doubly Linked List
 
