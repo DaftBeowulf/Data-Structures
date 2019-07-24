@@ -10,9 +10,11 @@ class Heap:
         # first swap root and last element
         self.storage[0], self.storage[-1] = self.storage[-1], self.storage[0]
         # delete last element (former root)
+        root = self.storage[-1]
         del self.storage[-1]
         # start process for sifting new root down
         self._sift_down(0)
+        return root
 
     def get_max(self):
         return self.storage[0]
