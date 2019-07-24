@@ -9,8 +9,7 @@ class TextBuffer:
         # check if an init string is provided
         # if so, put the contents of the init string in self.contents
         if init:
-            for char in init:
-                self.contents.add_to_tail(char)
+            self.append(init)
 
     def __str__(self):
         # needs to return a string to print
@@ -52,7 +51,9 @@ class TextBuffer:
 
     def join(self, other_buffer):
         # we might want to check that other_buffer is indeed a text buffer
-        if isinstance(other_buffer.contents.head.value, str):
+        if isinstance(other_buffer, TextBuffer):
+            if other_buffer.contents.length == 0:
+                print("ERROR: Other buffer is empty")
             # set self list tail's next node to be the head of the other buffer
             self.contents.tail.next = other_buffer.contents.head
         # set other_buffer head's prev node to be the tail of this buffer
@@ -68,7 +69,7 @@ class TextBuffer:
         elif isinstance(other_buffer, str):
             self.join_string(other_buffer)
         else:
-            return "Unsupported type"
+            print("Unsupported type")
 
     def join_string(self, string_to_join):
         if isinstance(string_to_join, str):
